@@ -41,3 +41,46 @@ df1 = DataFrame(zip1, columns = ['a','b','c'])
 
 ## search for missing data using 
 df1.isnull() #pandas method to find missing data
+np.isnan(df1) # numpy way
+
+## subset of columns
+cols = ['a','c']
+df1[cols]
+df1[cols].isnull()
+
+## for series
+df1['b'].isnull()
+
+## find non-missing values
+df1.isnull()
+df1.notnull()
+df1.isnull() == df1.notnull()
+
+# FILLING IN OR DROPPING VALUES
+
+## pandas method 'fillna'
+df1.fillna(999)
+df2 = df1.fillna(999)
+
+## pandas method 'dropna'
+# in R, 'null' and 'n/a' are 2 different values
+# in python, think of 'n/a', 'null', and 'NaN' as interchangable 
+df1.dropna() # drops ROWS with ANY missing values
+df1.dropna(axis = 0, how = 'any') # drop ROWS with ANY missing values
+df1.dropna(axis = 1, how = 'any') # drop COLUMNS with ANY missing values
+# axis 0 = rows, axis 1 = columns
+df1.dropna(axis = 0, how = 'all') # drop ROWS with ALL missing values
+
+## try it out with wbject df!
+df.dropna(how = 'all')
+
+# SEEING ROWS WITH MISSING DATA-----------------------------------------
+df1.isnull()
+df3 = df.dropna(how = 'all')
+df3.head(10)
+df3.isnull()
+df3['consump'].isnull()
+rows = df3['consump'].isnull() #is now a boolean vector/array
+#can use boolean indexing to extract rows that we want
+df3[rows] # only returns the true values
+# only missing values were the first 5 rows
