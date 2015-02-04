@@ -16,7 +16,7 @@ df[:10]
 df.tail(10) # tail(n) given bottom n rows 
 df['consump'].head(10).apply(type) #apply function type to top 10 rows of consump
 
-## we DON' want string data. periods are common placeholders for missing data 
+## we DON'T want string data. periods are common placeholders for missing data 
 #in some programming languages. so we need to create new missing value sentinels
 # use 'na_values' fxn to use sentinels
 missing = ['.','NA','NULL','']
@@ -59,6 +59,7 @@ df1.isnull() == df1.notnull()
 # FILLING IN OR DROPPING VALUES
 
 ## pandas method 'fillna'
+df1
 df1.fillna(999)
 df2 = df1.fillna(999)
 
@@ -71,7 +72,7 @@ df1.dropna(axis = 1, how = 'any') # drop COLUMNS with ANY missing values
 # axis 0 = rows, axis 1 = columns
 df1.dropna(axis = 0, how = 'all') # drop ROWS with ALL missing values
 
-## try it out with wbject df!
+## try it out with object df!
 df.dropna(how = 'all')
 
 # SEEING ROWS WITH MISSING DATA-----------------------------------------
