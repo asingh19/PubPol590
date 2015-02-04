@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 from pandas import Series, DataFrame
 import pandas as pd
 import numpy as np
@@ -69,3 +70,5 @@ final = ~unique & rows
 cleaned_data = df2[~final]
 
 consump_mean = cleaned_data.consump.mean()
+#consump_mean = 0.91743963893521185
+
